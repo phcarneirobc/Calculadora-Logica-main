@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <title>Calculadora Lógica</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+  </head>
+
+<body>
+  
+    <div>
+      
+      <div class="calculadora">
+        <img class="logo" src="IBMLogicCalculator.png" alt="Logo">
+        <div class="calculator dark">
+      
+          <div class="display-screen">
+              <div id="display"></div>
+              <div>
+                <div class="buttons">
+                  <button type="button" class="operand-group" onclick="insert('A')">
+                    A
+                  </button>
+                  <button type="button" class="operand-group" onclick="insert('B')">
+                    B
+                  </button>
+                  <button type="button" class="operand-group" onclick="insert('C')">
+                    C
+                  </button>
+                  <button type="button" class="operand-group" onclick="insert('D')">
+                    D
+                  </button>
+                  
+                  <button
+                    id="clear"
+                    type="button"
+                    class="function-btn"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-delay='{"show":500,"hide":100}'
+                    data-bs-title="Apagar"
+                    onclick="backspace()"
+                  >
+                    ⌫
+                  </button>
+                </div>
+                <div class="buttons">
+                  <button type="button" class="operand-group" onclick="insert('E')">
+                    E
+                  </button>
+                  <button type="button" class="operand-group" onclick="insert('F')">
+                    F
+                  </button>
+                  <button type="button" class="operand-group" onclick="insert('G')">
+                    G
+                  </button>
+                  <button type="button" class="operand-group" onclick="insert('H')">
+                    H
+                  </button>
+                  
+                  <button
+                    id="clear"
+                    type="button"
+                    class="function-btn"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-delay='{"show":500,"hide":100}'
+                    data-bs-title="Limpar"
+                    onclick="clear_screen()"
+                  >
+                    C
+                  </button>
+                </div>
+                
+                <div class="buttons">
+                  <button type="button" class="operator-group" onclick="insert('(')">
+                    (
+                  </button>
+                  <button type="button" class="operator-group" onclick="insert(')')">
+                    )
+                  </button>
+                  <button
+                    type="button"
+                    class="operator-group"
+                    onclick="insert('↔')"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-delay='{"show":500,"hide":100}'
+                    data-bs-title="Bicondicional (se e somente se)"
+                  >
+                    ↔
+                  </button>
+                  <button
+                    type="button"
+                    class="operator-group"
+                    onclick="insert('∨')"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-delay='{"show":500,"hide":100}'
+                    data-bs-title="Disjunção (ou)"
+                  >
+                    ∨
+                  </button>
+                  <button
+                    class="btn-true"
+                    type="button"
+                    onclick="insert('[Verdadeiro]')"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-delay='{"show":500,"hide":100}'
+                    data-bs-title="Verdadeiro"
+                  >
+                    V
+                  </button>
+                  
+                  
+                </div>
+                <div class="buttons">
+                  <button
+                    type="button"
+                    class="operator-group"
+                    onclick="insert('∧')"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-delay='{"show":500,"hide":100}'
+                    data-bs-title="Conjunção (e)"
+                  >
+                    ∧
+                  </button>
+                  <button
+                    type="button"
+                    class="operator-group"
+                    onclick="insert('⊻')"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-delay='{"show":500,"hide":100}'
+                    data-bs-title="Disjunção exclusiva (ou... ou...)"
+                  >
+                    ⊻
+                  </button>
+                  
+                  <button
+                    type="button"
+                    class="operator-group"
+                    onclick="insert('→')"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-delay='{"show":500,"hide":100}'
+                    data-bs-title="Condicional (se... então)"
+                  >
+                    →
+                  </button>
+                  
+                  <button
+                    type="button"
+                    class="operator-group"
+                    onclick="insert('∼')"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-delay='{"show":500,"hide":100}'
+                    data-bs-title="Negação"
+                  >
+                    ∼
+                  </button>
+                  <button
+                    class="btn-false"
+                    type="button"
+                    onclick="insert('[Falso]')"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-delay='{"show":500,"hide":100}'
+                    data-bs-title="Falso"
+                  >
+                    F
+                  </button>
+                </div>
+                <div class="buttons">
+                  <button
+                    id="equal"
+                    type="button"
+                    onclick="calculate()"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-delay='{"show":500,"hide":100}'
+                    data-bs-title="Calcular resultado"
+                  >
+                    =
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    <!-- Espaço para exibição do resultado -->
+  
+      <div>
+        <h5 id="table-test"></h5>
+      </div>
+      <div id="result"></div>
+    </div>
+
+    <!-- Funções -->
+    <script src="./js/index.js" type="text/javascript"></script>
+    <script>
+      const tooltipTriggerList = document.querySelectorAll(
+        '[data-bs-toggle="tooltip"]'
+      )
+    </script>
+  </body>
+</html>
